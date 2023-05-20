@@ -43,7 +43,7 @@ public class HuffmanCoding {
       input.read(this.fileBytes);
       int[] freq = new int[257];
 
-      /** Generate a frequency table for the bytes within the File. */
+      /** Generate a frequency table for the bytes within the File.  */
       for (int i = 0; i < this.fileBytes.length; i++) {
         freq[(int) (this.fileBytes[i]) + 128]++;
       }
@@ -117,7 +117,10 @@ public class HuffmanCoding {
 
     while (!tmp.isEmpty()) {
       HuffmanNode<Byte> node = tmp.dequeue();
-      q.enqueue(node, 0);
+
+      if (node.isLeaf()) {
+	      q.enqueue(node, 0);
+      }
 
       if (node.getRight() != null) {
         tmp.enqueue(node.getRight());
@@ -251,7 +254,7 @@ public class HuffmanCoding {
       FileOutputStream out = new FileOutputStream(fn, false);
 
       /** Converts the required information (filename, bracket representation, padding) to bytes. */
-      out.write((String.format("%s\r\n%s\r\n%d\r\n", this.filename.toUpperCase(), this.toString(), (byte) (this.padding)).getBytes()));
+      out.write((String.format("%s\r\n%s\r\n%d\r\n", this.filename, this.toString(), (byte) (this.padding)).getBytes()));
 
       for (int i = 0; i < this.byteSequence.length; i++) {
         out.write(this.byteSequence[i]);

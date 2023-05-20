@@ -1,5 +1,6 @@
 # Huffman Coding 
 A Huffman Coding implementation in Java, using built from scratch using mainly:
+- Queue
 - Priority Queue
 - Binary Tree
 
